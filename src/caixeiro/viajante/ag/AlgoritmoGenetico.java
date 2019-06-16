@@ -9,7 +9,7 @@ public class AlgoritmoGenetico {
     
     public static void solucionar(int numCidades,int[][] mapa, float taxaMortalidade, int numeroEvolucoes, boolean mostrarEvolucao){
         NUMERO_CIDADES = numCidades;
-        String[] cidades = { "A", "B", "C", "D", "E", "F", "G", "H" };
+        String[] cidades = nomearCidades(numCidades);
         int[][] cromossomos = new int[NUMERO_POPULACAO][NUMERO_CIDADES];
         int[] resultados = new int[NUMERO_POPULACAO];
 
@@ -182,8 +182,7 @@ public class AlgoritmoGenetico {
             return crom_valido;
     }
 
-    private static void imprimir(int[][] cromossomos, int[] resultados,
-                    String[] cidades) {
+    private static void imprimir(int[][] cromossomos, int[] resultados, String[] cidades) {
             int i, i2;
             for (i = 0; i < NUMERO_POPULACAO; i++) {
                     for (i2 = 0; i2 < NUMERO_CIDADES; i2++) {
@@ -229,4 +228,15 @@ public class AlgoritmoGenetico {
             }
     }
 
+    // nomeia as cidades de acordo com o índice
+    private static String[] nomearCidades (int numCidades) {
+       
+        String[] nomeCidades = new String[numCidades];
+        
+        for(int i = 0; i < numCidades; i++) {
+            nomeCidades[i] = "cidade " + (i + 1);
+        }
+        
+        return nomeCidades;
+    }
 }

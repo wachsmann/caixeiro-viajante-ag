@@ -50,10 +50,10 @@ public class CaixeiroViajanteAg {
         
     }
     
-    /*
-    
-        Formata data set para matrizes de adjacências
-    
+    /**
+    * 
+    *  Formata data set para matrizes de adjacências
+    *
     */
     
     public static void formataDadosMatriz(){
