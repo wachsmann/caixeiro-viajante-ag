@@ -38,8 +38,9 @@ public class CaixeiroViajanteAg {
             AlgoritmoGenetico.solucionar(
                     citiesList.get(0).getQuantity(),
                     citiesList.get(0).matriz,
-                    3000, 
-                    (float) 0.5,
+                     
+                    (float) 0.2,
+                    3000,
                     true
             );
             

@@ -7,7 +7,7 @@ public class AlgoritmoGenetico {
     public static int NUMERO_CIDADES = 8;
     public static int NUMERO_POPULACAO = 10;
     
-    public static void solucionar(int numCidades,int[][] mapa, int taxaMortalidade, float numeroEvolucoes, boolean mostrarEvolucao){
+    public static void solucionar(int numCidades,int[][] mapa, float taxaMortalidade, int numeroEvolucoes, boolean mostrarEvolucao){
         NUMERO_CIDADES = numCidades;
         String[] cidades = { "A", "B", "C", "D", "E", "F", "G", "H" };
         int[][] cromossomos = new int[NUMERO_POPULACAO][NUMERO_CIDADES];
