@@ -28,9 +28,35 @@ public class CaixeiroViajanteAg {
     
     public static void main(String[] args) {
         try{
+            
             citiesList = new ArrayList<Cities>();
+            
             readFile("teste.txt");
-            for (Cities cities : citiesList) {
+            
+            formataDadosMatriz();
+            
+            AlgoritmoGenetico.solucionar(
+                    citiesList.get(0).getQuantity(),
+                    citiesList.get(0).matriz,
+                    3000, 
+                    (float) 0.5,
+                    true
+            );
+            
+        } catch (IOException ex) {
+            Logger.getLogger(CaixeiroViajanteAg.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    /*
+    
+        Formata data set para matrizes de adjacências
+    
+    */
+    
+    public static void formataDadosMatriz(){
+        for (Cities cities : citiesList) {
                 ArrayList<Integer> distances = cities.getDistances();
                 distances.remove(0);
                 
@@ -97,13 +123,11 @@ public class CaixeiroViajanteAg {
                 }
                 
                 System.out.println(saida);
+                
+                cities.matriz = matriz;
             }
-        } catch (IOException ex) {
-            Logger.getLogger(CaixeiroViajanteAg.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
     }
-
+    
     /*
         Lê arquivo e faz importação de dados pra dentro da lista citiesList
     */
