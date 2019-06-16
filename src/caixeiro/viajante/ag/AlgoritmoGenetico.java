@@ -43,6 +43,8 @@ public class AlgoritmoGenetico {
             }
             System.out.print(cidades[cromossomos[i][0]] + " ");
             System.out.println(" Resultado: " + resultados[i]);
+            System.out.println("\n");
+
 
     }
 

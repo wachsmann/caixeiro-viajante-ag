@@ -35,14 +35,17 @@ public class CaixeiroViajanteAg {
             
             formataDadosMatriz();
             
-            AlgoritmoGenetico.solucionar(
-                    citiesList.get(0).getQuantity(),
-                    citiesList.get(0).matriz,
+            for (Cities cities : citiesList) {
+                System.out.println("Solução para " + cities.getQuantity() + " cidades:");
+                AlgoritmoGenetico.solucionar(
+                    cities.getQuantity(),
+                    cities.matriz,
                      
                     (float) 0.2,
                     3000,
-                    true
-            );
+                    false
+                );
+            }
             
         } catch (IOException ex) {
             Logger.getLogger(CaixeiroViajanteAg.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,8 +66,8 @@ public class CaixeiroViajanteAg {
                 
                 int matriz[][] = new int[cities.getQuantity()][cities.getQuantity()];
 
-                System.out.println(distances);
-                System.out.println("\n");
+                //System.out.println(distances);
+                //System.out.println("\n");
                 
                 // Inicialização da matriz com "0"
                 for (int i = 0; i < cities.getQuantity(); i++) {
@@ -123,7 +126,7 @@ public class CaixeiroViajanteAg {
                     saida += "\n";
                 }
                 
-                System.out.println(saida);
+                //System.out.println(saida);
                 
                 cities.matriz = matriz;
             }
