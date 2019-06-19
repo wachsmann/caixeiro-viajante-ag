@@ -18,9 +18,9 @@ public class Cities {
         if(quantity < 21 && quantity > 0){
             this.quantity = quantity;
             this.distances = new ArrayList<>();
-            this.matriz = new int[quantity][quantity];
+            this.matrice = new int[quantity][quantity];
         }else{
-            throw new ExceptionInInitializerError("Quantidade inválida");
+            throw new ExceptionInInitializerError("The number of cities is invalid");
         }
         
     }
@@ -29,7 +29,7 @@ public class Cities {
     
     private ArrayList<Integer> distances;
 
-    public int matriz[][];
+    public int[][] matrice;
     
     public Integer getQuantity() {
         return this.quantity;

@@ -33,17 +33,16 @@ public class CaixeiroViajanteAg {
             
             readFile("teste.txt");
             
-            formataDadosMatriz();
+            formatMatriceData();
             
             for (Cities cities : citiesList) {
-                System.out.println("Solução para " + cities.getQuantity() + " cidades:");
-                AlgoritmoGenetico.solucionar(
-                    cities.getQuantity(),
-                    cities.matriz,
+                System.out.println("Solution for " + cities.getQuantity() + " cities:");
+                GeneticAlgorithm.resolve(cities.getQuantity(),
+                    cities.matrice,
                      
                     (float) 0.2,
                     3000,
-                    false
+                    true
                 );
             }
             
@@ -59,12 +58,12 @@ public class CaixeiroViajanteAg {
     *
     */
     
-    public static void formataDadosMatriz(){
+    public static void formatMatriceData(){
         for (Cities cities : citiesList) {
                 ArrayList<Integer> distances = cities.getDistances();
                 distances.remove(0);
                 
-                int matriz[][] = new int[cities.getQuantity()][cities.getQuantity()];
+                int[][] matrice = new int[cities.getQuantity()][cities.getQuantity()];
 
                 //System.out.println(distances);
                 //System.out.println("\n");
@@ -73,9 +72,9 @@ public class CaixeiroViajanteAg {
                 for (int i = 0; i < cities.getQuantity(); i++) {
                     for (int j = 0; j < cities.getQuantity(); j++) {
                         if (i == j) {
-                            matriz[i][j] = 0;
+                            matrice[i][j] = 0;
                         } else {
-                            matriz[i][j] = -1;
+                            matrice[i][j] = -1;
                         }
                     }
                 }
@@ -89,19 +88,19 @@ public class CaixeiroViajanteAg {
                     // Caso checar no final da matriz entra
                     if (aux_2 >= cities.getQuantity()) {
                         
-                        if (matriz[aux][0] == -1 || matriz[0][aux] == -1) {
-                            matriz[aux][0] = distances.get(i);
-                            matriz[0][aux] = distances.get(i);
+                        if (matrice[aux][0] == -1 || matrice[0][aux] == -1) {
+                            matrice[aux][0] = distances.get(i);
+                            matrice[0][aux] = distances.get(i);
                         }
                         
                         
                         // Percorre verificando todas as conexões e adiciona caso não tenha 
                         for (int j = 0; j < cities.getQuantity(); j++) {
                             for (int k = 0; k < cities.getQuantity(); k++) {
-                                if (matriz[j][k] == -1 || matriz[k][j] == -1) {
+                                if (matrice[j][k] == -1 || matrice[k][j] == -1) {
                                     i++;
-                                    matriz[j][k] = distances.get(i);
-                                    matriz[k][j] = distances.get(i);
+                                    matrice[j][k] = distances.get(i);
+                                    matrice[k][j] = distances.get(i);
                                 }
                             }
                         }
@@ -109,9 +108,9 @@ public class CaixeiroViajanteAg {
                         break;
                     }
                     
-                    if (matriz[aux][aux_2] == -1 || matriz[aux_2][aux] == -1) {
-                        matriz[aux][aux_2] = distances.get(i);
-                        matriz[aux_2][aux] = distances.get(i);
+                    if (matrice[aux][aux_2] == -1 || matrice[aux_2][aux] == -1) {
+                        matrice[aux][aux_2] = distances.get(i);
+                        matrice[aux_2][aux] = distances.get(i);
                     }
                     
                     aux++;
@@ -121,14 +120,14 @@ public class CaixeiroViajanteAg {
                 String saida = "";
                 for (int i = 0; i < cities.getQuantity(); i++) {
                     for (int j = 0; j < cities.getQuantity(); j++) {
-                        saida += matriz[i][j] + "\t";
+                        saida += matrice[i][j] + "\t";
                     }
                     saida += "\n";
                 }
                 
                 //System.out.println(saida);
                 
-                cities.matriz = matriz;
+                cities.matrice = matrice;
             }
     }
     
