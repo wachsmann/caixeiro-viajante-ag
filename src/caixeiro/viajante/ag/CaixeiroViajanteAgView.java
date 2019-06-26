@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package caixeiro.viajante.ag;
 
 import java.io.BufferedReader;
@@ -50,10 +45,10 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void execution() {
+    public void execution(int evolutionNumber, double mortalityRate) {
         
-        int evolutionNumber = 3000;
-        double mortalityRate = 0.2;
+      //  int evolutionNumber = 3000;
+       // double mortalityRate = 0.2;
 
         formatMatriceData();
         textFormat += "======================================================\n";
@@ -78,9 +73,7 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
     }
 
     /**
-     *
      * Formata data set para matrizes de adjacências
-     *
      */
     public static void formatMatriceData() {
         for (Cities cities : citiesList) {
@@ -165,6 +158,11 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         txtCodigo = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldMortalityRate = new javax.swing.JTextField();
+        jTextFieldGenerations = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Abrir = new javax.swing.JMenuItem();
@@ -180,6 +178,29 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
         jScrollPane4.setViewportView(txtCodigo);
 
         jLabel1.setText("Result");
+
+        jLabel2.setText("mortality rate");
+
+        jLabel3.setText("generations");
+
+        jTextFieldMortalityRate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldMortalityRateActionPerformed(evt);
+            }
+        });
+
+        jTextFieldGenerations.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldGenerationsActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("começar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Menu");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -208,19 +229,35 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 609, Short.MAX_VALUE))
-                    .addComponent(jScrollPane4))
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldMortalityRate, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel3)
+                        .addGap(26, 26, 26)
+                        .addComponent(jTextFieldGenerations, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextFieldMortalityRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldGenerations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -251,7 +288,7 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
                 }
 
                 // Vai para execução
-                execution();
+                //execution(Integer.parseInt(jTextFieldGenerations.getText()), Double.parseDouble(jTextFieldMortalityRate.getText()));
             } catch (ExceptionInInitializerError ex) {
                 System.out.println(ex.getMessage());
             } catch (FileNotFoundException ex) {
@@ -269,6 +306,18 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jTextFieldMortalityRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMortalityRateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldMortalityRateActionPerformed
+
+    private void jTextFieldGenerationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldGenerationsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldGenerationsActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        execution(Integer.parseInt(jTextFieldGenerations.getText()), Double.parseDouble(jTextFieldMortalityRate.getText()));
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,10 +358,15 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Abrir;
     private javax.swing.JFileChooser fileChooser;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTextField jTextFieldGenerations;
+    private javax.swing.JTextField jTextFieldMortalityRate;
     private javax.swing.JTextArea txtCodigo;
     // End of variables declaration//GEN-END:variables
 }
