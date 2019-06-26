@@ -71,9 +71,9 @@
                       <Component id="jTextFieldMortalityRate" min="-2" pref="69" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jTextFieldGenerations" min="-2" pref="72" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -113,7 +113,7 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="======================================================&#xa;&#x9;       INSTRUCTION FOR BUILD &#xa;&#xa;1 - Pra executar a aplica&#xe7;&#xe3;o necess&#xe1;rio clicar na barra de tarefas &#x201c;menu&#x201d;, selecionar a op&#xe7;&#xe3;o &#x201c;Abrir&#x201d;.&#xa;2 -  Ap&#xf3;s isto voc&#xea; deve selecionar o arquivo .txt com as cidades&#xa;====================================================="/>
+            <Property name="text" type="java.lang.String" value="======================================================&#xa;&#x9;       INSTRUCTION FOR BUILD &#xa;&#xa;1 - Pra executar a aplica&#xe7;&#xe3;o necess&#xe1;rio clicar na barra de tarefas &#x201c;menu&#x201d;, selecionar a op&#xe7;&#xe3;o &#x201c;Abrir&#x201d;.&#xa;2 - Ap&#xf3;s isto voc&#xea; deve selecionar o arquivo .txt com as cidades.&#xa;3 - Inserir a taxa de mortalidade e o n&#xfa;mero de gera&#xe7;&#xf5;es.&#xa;4 - Clicar no bot&#xe3;o &quot;come&#xe7;ar&quot;.&#xa;&#xa;======================================================"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -125,12 +125,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="mortality rate"/>
+        <Property name="text" type="java.lang.String" value="mortality rate (ex: 0.4)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="generations"/>
+        <Property name="text" type="java.lang.String" value="generations (ex: 5000)"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldMortalityRate">

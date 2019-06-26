@@ -50,7 +50,7 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
       //  int evolutionNumber = 3000;
        // double mortalityRate = 0.2;
 
-        formatMatriceData();
+        //formatMatriceData();
         textFormat += "======================================================\n";
         textFormat += "\t                  CONFIGURATION \n\n";
         textFormat += "Evolution Number: " + evolutionNumber + "\n";
@@ -62,9 +62,9 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
             textFormat += "Population: " + cities.getPopulation() + " \n";
             textFormat += GeneticAlgorithm.resolve(cities.getQuantity(),
                     cities.matrice,
-                    (float) 0.5,
+                    (float) mortalityRate,
                     cities.getPopulation(),
-                    3000,
+                    evolutionNumber,
                     false
             );
         }
@@ -174,14 +174,14 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
 
         txtCodigo.setColumns(20);
         txtCodigo.setRows(5);
-        txtCodigo.setText("======================================================\n\t       INSTRUCTION FOR BUILD \n\n1 - Pra executar a aplicação necessário clicar na barra de tarefas “menu”, selecionar a opção “Abrir”.\n2 -  Após isto você deve selecionar o arquivo .txt com as cidades\n=====================================================");
+        txtCodigo.setText("======================================================\n\t       INSTRUCTION FOR BUILD \n\n1 - Pra executar a aplicação necessário clicar na barra de tarefas “menu”, selecionar a opção “Abrir”.\n2 - Após isto você deve selecionar o arquivo .txt com as cidades.\n3 - Inserir a taxa de mortalidade e o número de gerações.\n4 - Clicar no botão \"começar\".\n\n======================================================");
         jScrollPane4.setViewportView(txtCodigo);
 
         jLabel1.setText("Result");
 
-        jLabel2.setText("mortality rate");
+        jLabel2.setText("mortality rate (ex: 0.4)");
 
-        jLabel3.setText("generations");
+        jLabel3.setText("generations (ex: 5000)");
 
         jTextFieldMortalityRate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,9 +238,9 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
                         .addComponent(jTextFieldMortalityRate, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addComponent(jLabel3)
-                        .addGap(26, 26, 26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextFieldGenerations, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
+                        .addGap(56, 56, 56)
                         .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -269,6 +269,7 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
 
+            citiesList.clear();
             List<List<String>> records = new ArrayList<>();
             try (BufferedReader br = new BufferedReader(new FileReader(file.getAbsolutePath()))) {
                 String line;
@@ -287,6 +288,8 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
                     citiesList.add(cities);
                 }
 
+                
+                formatMatriceData();
                 // Vai para execução
                 //execution(Integer.parseInt(jTextFieldGenerations.getText()), Double.parseDouble(jTextFieldMortalityRate.getText()));
             } catch (ExceptionInInitializerError ex) {
@@ -298,6 +301,7 @@ public class CaixeiroViajanteAgView extends javax.swing.JFrame {
             } catch (NumberFormatException ex) {
                 System.out.println("Favor selecionar o arquivo correto!");
             }
+            
         } else {
             System.out.println("File access cancelled by user.");
         }
