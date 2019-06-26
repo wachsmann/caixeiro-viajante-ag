@@ -11,21 +11,22 @@ public class GeneticAlgorithm {
     public static int CITY_COUNT;
     public static int POPULATION = 10;
     
-    public static void resolve(int numCities,int[][] map, float mortalityRate,
+    public static String resolve(int numCities,int[][] map, float mortalityRate,
                                 int population, int evolutionNumber, boolean showcaseEvolution){
         CITY_COUNT = numCities;
         POPULATION = population;
         String[] cities = nameCities(numCities);
         int[][] chromosomePopulation = new int[POPULATION][CITY_COUNT];
         int[] results = new int[POPULATION];
+        TextFormat text = new TextFormat();
 
         generateChromosomesRandomly(chromosomePopulation);
         calculateResults(chromosomePopulation, results, map);
         
         //orderResults(chromosomePopulation, results);
-        if (showcaseEvolution)
-                printEvolution(chromosomePopulation, results, cities);
-        
+       if (showcaseEvolution) {
+            printEvolution(chromosomePopulation, results, cities, text);
+        }
         for (int i = 0; i < evolutionNumber; i++) {
             
                 //TODO: tournament
@@ -41,15 +42,15 @@ public class GeneticAlgorithm {
                 calculateResults(chromosomePopulation, results, map);
                 //orderResults(chromosomePopulation, results);
                 if (showcaseEvolution) {
-                        System.out.println("generation: " + (i + 1));
-                        printEvolution(chromosomePopulation, results, cities);
+                    text.concatenateText("generation: " + (i + 1) + "\n");
+                    printEvolution(chromosomePopulation, results, cities, text);
                 }
             
                 
         }
         // mostrando resultado encontrado
-        showResult (chromosomePopulation, results, cities);
-        
+         showResult(chromosomePopulation, results, cities, text);
+        return text.getText();
     }
 
     public static int applyTournament(int[] results){
@@ -68,16 +69,14 @@ public class GeneticAlgorithm {
         return bestOne;
         
     }
-    private static void showResult(int[][] chromosomes, int[] results, String[] cities) {
-            int i, i2;
-            i=0;
-            for (i2 = 0; i2 < CITY_COUNT; i2++) {
-                    System.out.print(cities[chromosomes[i][i2]] + " --> ");
-            }
-            System.out.print(cities[chromosomes[i][0]] + " ");
-            System.out.println(" Result: " + results[i]);
-            System.out.println("\n");
-
+    private static void showResult(int[][] chromosomes, int[] results, String[] cities, TextFormat text) {
+        int i, i2;
+        i = 0;
+        for (i2 = 0; i2 < CITY_COUNT; i2++) {
+            text.concatenateText(cities[chromosomes[i][i2]] + " --> ");
+        }
+        text.concatenateText(cities[chromosomes[i][0]] + " ");
+        text.concatenateText(" Result: " + results[i] + "\n\n");
 
     }
 
@@ -228,14 +227,14 @@ public class GeneticAlgorithm {
             return valid_chromosome;
     }
 
-    private static void printEvolution(int[][] chromosomes, int[] results, String[] cities) {
-            for (int i = 0; i < POPULATION; i++) {
-                    for (int i2 = 0; i2 < CITY_COUNT; i2++) {
-                            System.out.print(cities[chromosomes[i][i2]] + " --> ");
-                    }
-                    System.out.print(cities[chromosomes[i][0]] + " ");
-                    System.out.println(" Results: " + results[i]);
+    private static void printEvolution(int[][] chromosomes, int[] results, String[] cities, TextFormat text) {
+        for (int i = 0; i < POPULATION; i++) {
+            for (int i2 = 0; i2 < CITY_COUNT; i2++) {
+                text.concatenateText(cities[chromosomes[i][i2]] + " --> ");
             }
+            text.concatenateText(cities[chromosomes[i][0]] + " ");
+            text.concatenateText(" Results: " + results[i] + "\n");
+        }
     }
 
     private static void calculateResults(int[][] chromosomePopulation, int[] results, int[][] map) {
